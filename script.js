@@ -62,6 +62,13 @@ function nextSong() {
     playSong();
 }
 
+// Autoplay next song
+function autoplayNextSong() {
+    if (audio.currentTime === audio.duration) {
+        nextSong();
+    }
+}
+
 // Update progress
 function updateProgress(e) {
     const { duration, currentTime } = e.srcElement;
@@ -91,4 +98,5 @@ playBtn.addEventListener('click', () => {
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
 audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('timeupdate', autoplayNextSong);
 progressContainer.addEventListener('click', setProgress);
